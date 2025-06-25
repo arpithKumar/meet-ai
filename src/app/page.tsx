@@ -1,7 +1,16 @@
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      Home
-    </div>
-  );
-}
+import { auth } from "@/lib/auth";
+import HomeView from "@/modules/home/ui/views/home-view";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+
+const Page = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  if (!session) {
+    redirect("/sign-in");
+  }
+  return <HomeView />;
+};
+
+export default Page;
