@@ -1,18 +1,22 @@
-import { SidebarProvider } from '@/components/ui/sidebar';
-import DashboardSidebar from '@/modules/dashboard/ui/components/dashboard-sidebar';
-import React from 'react'
+import { SidebarProvider } from "@/components/ui/sidebar";
+import DashboardNavbar from "@/modules/dashboard/ui/components/dashboard-navbar";
+import DashboardSidebar from "@/modules/dashboard/ui/components/dashboard-sidebar";
+import React from "react";
 
 interface Props {
   children: React.ReactNode;
 }
 
-const DashBoardlayout = ( { children }: Props) => {
+const DashBoardlayout = ({ children }: Props) => {
   return (
-      <SidebarProvider>
-          <DashboardSidebar />
-      <main className='flex flex-col h-screen bg-muted'>{children}</main>
+    <SidebarProvider>
+      <DashboardSidebar />
+      <main className="flex flex-col h-screen w-screen bg-muted">
+        <DashboardNavbar />
+        {children}
+      </main>
     </SidebarProvider>
   );
-}
+};
 
 export default DashBoardlayout;
