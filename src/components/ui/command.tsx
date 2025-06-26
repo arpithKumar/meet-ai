@@ -75,7 +75,7 @@ function CommandResponsiveDialog({
   className,
   showCloseButton = true,
   ...props
-}: React.ComponentProps<typeof Dialog> & {
+}: React.ComponentProps<typeof Dialog | typeof Drawer> & {
   title?: string;
   description?: string;
   className?: string;
