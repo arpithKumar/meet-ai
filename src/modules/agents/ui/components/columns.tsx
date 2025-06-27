@@ -28,15 +28,21 @@ export const columns: ColumnDef<AgentGetOne>[] = [
         </div>
       </div>
     ),
-    },
-    {
-        accessorKey: "meetingCount",
-        header: "Meetings",
-        cell: () => (
-            <Badge variant={"outline"} className="flex items-center gap-x-2 [&>svg]:size-4">
-                <VideoIcon className="text-blue-700" />
-                {/* {row.original.meetingCount} {row.original.meetingCount === 1 ? "meeting" : "meetings" } */} 5 meetings
-            </Badge>
-        )
-    }
+  },
+  {
+    accessorKey: "meetingCount",
+    header: "Meetings",
+    cell: ({ row }) => (
+      <Badge
+        variant={"outline"}
+        className="flex items-center gap-x-2 p-3.5 [&>svg]:size-5"
+      >
+        <VideoIcon className="text-blue-700" />
+        <span className="text-sm text-muted-foreground hover:text-black">
+          {row.original.meetingCount}{" "}
+          {row.original.meetingCount === 1 ? "meeting" : "meetings"}
+        </span>
+      </Badge>
+    ),
+  },
 ];
