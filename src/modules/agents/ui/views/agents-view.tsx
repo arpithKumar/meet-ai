@@ -35,6 +35,7 @@ export const AgentsView = () => {
       />
       {data.items.length === 0 && (
         <EmptyState
+          isAgentScreen={true}
           title="Create your first Agent"
           description="Create an agent to join your meetings. Each agent will follow your instructions and can interact with participants during the call..."
         />
