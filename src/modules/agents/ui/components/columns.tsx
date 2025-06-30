@@ -1,12 +1,12 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { AgentGetOne } from "../../types";
+import { AgentGetMany } from "../../types";
 import GeneratedAvatar from "@/components/generatedAvatar";
 import { CornerDownRightIcon, VideoIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
-export const columns: ColumnDef<AgentGetOne>[] = [
+export const columns: ColumnDef<AgentGetMany[number]>[] = [
   {
     accessorKey: "name",
     header: "Agent Name",
@@ -35,7 +35,7 @@ export const columns: ColumnDef<AgentGetOne>[] = [
     cell: ({ row }) => (
       <Badge
         variant={"outline"}
-        className="flex items-center gap-x-2 p-3.5 [&>svg]:size-5"
+        className="flex items-center gap-x-2 [&>svg]:size-5"
       >
         <VideoIcon className="text-blue-700" />
         <span className="text-sm text-muted-foreground hover:text-black">
