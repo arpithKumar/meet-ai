@@ -10,10 +10,21 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import React, { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { loadSearchParams } from "@/modules/meetings/params";
+import type { SearchParams } from "nuqs/server";
 
-const page = async () => {
+interface SearchParamsProps {
+  searchParams: Promise<SearchParams>;
+}
+
+const page = async ({ searchParams }: SearchParamsProps) => {
+  const filterParams = await loadSearchParams(searchParams);
   const queryClient = getQueryClient();
-  void queryClient.prefetchQuery(trpc.meetings.getMany.queryOptions({}));
+  void queryClient.prefetchQuery(
+    trpc.meetings.getMany.queryOptions({
+      ...filterParams,
+    })
+  );
 
   const session = await auth.api.getSession({
     headers: await headers(),
