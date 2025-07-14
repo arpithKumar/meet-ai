@@ -12,7 +12,8 @@
     "db:reset": "drizzle-kit reset",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
-    "dev:webhook": "ngrok http --url=tetra-warm-killdeer.ngrok-free.app 3000"
+    "dev:webhook": "ngrok http --url=tetra-warm-killdeer.ngrok-free.app 3000",
+    "dev:inngest": "npx inngest-cli@latest dev"
   },
   "dependencies": {
     "@dicebear/collection": "^9.2.3",
@@ -78,6 +79,7 @@
     "react-error-boundary": "^6.0.0",
     "react-hook-form": "^7.58.1",
     "react-icons": "^5.5.0",
+    "react-markdown": "^10.1.0",
     "react-resizable-panels": "^3.0.3",
     "recharts": "^3.0.0",
     "server-only": "^0.0.1",

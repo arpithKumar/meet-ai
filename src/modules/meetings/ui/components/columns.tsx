@@ -2,7 +2,6 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns";
-import humanizeDuration from "humanize-duration";
 import GeneratedAvatar from "@/components/generatedAvatar";
 import {
   CornerDownRightIcon,
@@ -12,17 +11,9 @@ import {
   ClockFadingIcon,
   LoaderIcon,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, formatDuration } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { MeetingGetMany } from "../../types";
-
-const formatDuration = (seconds: number) => {
-  return humanizeDuration(seconds * 1000, {
-    largest: 1,
-    round: true,
-    units: ["h", "m", "s"],
-  });
-};
 
 const statusIconMap = {
   upcoming: ClockArrowUpIcon,
