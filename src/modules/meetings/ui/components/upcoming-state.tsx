@@ -1,5 +1,10 @@
 import EmptyState from "@/components/empty-state";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { BanIcon, VideoIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -28,7 +33,13 @@ export const UpcomingState = ({
           onClick={onCancelMeeting}
           disabled={isCancelling}
         >
-          <BanIcon /> Cancel meeting
+          <BanIcon />
+          <Tooltip>
+            <TooltipTrigger>Cancel meeting</TooltipTrigger>
+            <TooltipContent>
+              <p>Cancelling a meeting will also delete it !</p>
+            </TooltipContent>
+          </Tooltip>
         </Button>
         <Button asChild className="w-full lg:w-auto" disabled={isCancelling}>
           <Link href={`/call/${meetingId}`}>

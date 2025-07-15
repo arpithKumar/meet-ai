@@ -89,7 +89,7 @@ const MeetingIdView = ({ meetingId }: MeetingIdViewProps) => {
         {isUpcoming && (
           <UpcomingState
             meetingId={meetingId}
-            onCancelMeeting={() => {}}
+            onCancelMeeting={handleRemoveMeeting}
             isCancelling={false}
           />
         )}
