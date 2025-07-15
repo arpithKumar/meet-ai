@@ -1,6 +1,6 @@
 import { agents, meetings, user } from "@/db/schema";
 import { db } from "@/index";
-import { createTRPCRouter, protectedProcedure } from "@/trpc/init";
+import { createTRPCRouter, premiumProcedure, protectedProcedure } from "@/trpc/init";
 import { z } from "zod";
 import {
   and,
@@ -238,7 +238,7 @@ export const meetingsRouter = createTRPCRouter({
         totalPages: Math.ceil(total.count / pageSize),
       };
     }),
-  create: protectedProcedure
+  create: premiumProcedure("meetings")
     .input(meetingsInsertSchema)
     .mutation(async ({ input, ctx }) => {
       const [createdMeeting] = await db

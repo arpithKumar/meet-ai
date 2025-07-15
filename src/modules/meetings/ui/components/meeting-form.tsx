@@ -22,6 +22,7 @@ import CommandSelect from "@/components/command-select";
 import GeneratedAvatar from "@/components/generatedAvatar";
 import { NewAgentDialog } from "@/modules/agents/ui/components/new-agent-dialog";
 import { PlusCircleIcon, SquarePen } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface MeetingFormProps {
   onSuccess?: (id?: string) => void;
@@ -35,6 +36,7 @@ export const MeetingForm = ({
   initialValues,
 }: MeetingFormProps) => {
   const trpc = useTRPC();
+  const router = useRouter();
   const queryClient = useQueryClient();
 
   const [agentSearch, setAgentSearch] = useState("");
@@ -53,10 +55,16 @@ export const MeetingForm = ({
         await queryClient.invalidateQueries(
           trpc.meetings.getMany.queryOptions({})
         );
+        await queryClient.invalidateQueries(
+          trpc.premium.getFreeUsage.queryOptions()
+        );
         onSuccess?.(data.id);
       },
       onError: (error) => {
         toast.error(error.message);
+        if (error.data?.code === "FORBIDDEN") {
+          router.push("/upgrade");
+        }
       },
     })
   );

@@ -19,6 +19,7 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import DashboardUserButton from "./dashboard-user-button";
+import DashboardTrials from "./dashboard-trial";
 
 const firstSection = [
   {
@@ -112,6 +113,7 @@ const DashboardSidebar = () => {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="text-white">
+        <DashboardTrials />
         <DashboardUserButton />
       </SidebarFooter>
     </Sidebar>
